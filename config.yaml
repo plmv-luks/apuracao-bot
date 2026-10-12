@@ -1,0 +1,20 @@
+# canal onde o painel é publicado
+canal_id: 1556414195686178847
+
+# 1 ou 2, trocou e reiniciou ele cria uma mensagem nova
+turno: 1
+
+# ids da eleição no TSE (presidente), 1º e 2º turno
+# pra achar: https://resultados.tse.jus.br/oficial/comum/config/ele-c.json
+# procura "ele2026" > "Eleição Ordinária Federal - 2026 1º Turno", o "cd" é o 1º turno e o "cdt2" é o 2º
+eleicoes:
+  1: 6257
+  2: 6258
+
+intervalo: 30
+
+# números de urna que aparecem, vazio mostra todos. ex: [13, 22]
+candidatos: []
+
+# quantos aparecem com barra e votos, o resto vira uma linha só
+max_detalhado: 4
