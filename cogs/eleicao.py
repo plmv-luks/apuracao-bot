@@ -1,4 +1,3 @@
-import asyncio
 import json
 import logging
 from pathlib import Path
@@ -133,7 +132,7 @@ class Apuracao(commands.Cog):
         try:
             if await self.buscar():
                 await self.publicar()
-        except (aiohttp.ClientError, asyncio.TimeoutError, ValueError, KeyError, discord.HTTPException) as e:
+        except Exception as e:
             log.warning("falhou ao atualizar a apuração: %r", e)
 
     @atualizar.before_loop

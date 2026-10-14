@@ -19,28 +19,13 @@ bot.config = CONFIG
 
 @bot.event
 async def on_ready():
-    print(f"Logado como {bot.user} (ID: {bot.user.id})")
-    try:
-        synced = await bot.tree.sync()
-        print(f"{len(synced)} comando(s) sincronizado(s).")
-    except Exception as e:
-        print(f"Erro ao sincronizar comandos: {e}")
-
-
-async def carregar_cogs():
-    for arquivo in os.listdir("./cogs"):
-        if arquivo.endswith(".py") and not arquivo.startswith("_"):
-            extensao = f"cogs.{arquivo[:-3]}"
-            try:
-                await bot.load_extension(extensao)
-                print(f"Cog carregada: {extensao}")
-            except Exception as e:
-                print(f"Erro ao carregar {extensao}: {e}")
+    await bot.tree.sync()
+    print(f"online como {bot.user}")
 
 
 async def main():
     async with bot:
-        await carregar_cogs()
+        await bot.load_extension("cogs.eleicao")
         await bot.start(TOKEN)
 
 
