@@ -17,6 +17,13 @@ def fmt(n):
     return f"{int(n):,}".replace(",", ".")
 
 
+def nome_bonito(nome):
+    nome = nome.title()
+    for lig in ("Da", "De", "Do", "Das", "Dos", "E"):
+        nome = nome.replace(f" {lig} ", f" {lig.lower()} ")
+    return nome
+
+
 def barra(pct):
     cheio = round(float(pct.replace(",", ".")) / 100 * BARRA)
     return "█" * cheio + "░" * (BARRA - cheio)
@@ -83,7 +90,7 @@ class Apuracao(commands.Cog):
         blocos = []
         resto = []
         for pos, (cand, sigla) in enumerate(candidatos, start=1):
-            nome = cand["nmu"].title()
+            nome = nome_bonito(cand["nmu"])
             if pos > self.max_detalhado:
                 resto.append(f"{pos}. {nome}  ·  {sigla} {cand['n']}  ·  {cand['pvap']}%  ·  {fmt(cand['vap'])}")
                 continue
